@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import id.mufiid.formgenerator.databinding.ActivityMainBinding
 import id.mufiid.formgenerator.formgenerator.utils.Mode
+import id.mufiid.formgenerator.formgenerator.views.ButtonController
 import id.mufiid.formgenerator.formgenerator.views.EditTextController
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,20 @@ class MainActivity : AppCompatActivity() {
             title = "ID"
             mode = Mode.SEARCH
         }.create()
+
+        /**
+         * Attach Button View
+         */
+        _bind?.formLayout?.let {
+            ButtonController.Builder(this)
+                .setFormLayout(it).apply {
+                text = "My Button"
+            }
+                .setOnClickListener {
+                    Toast.makeText(this, "Button Controller", Toast.LENGTH_SHORT).show()
+                }
+                .create()
+        }
 
         editTextId.setOnClickSearchListener {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
