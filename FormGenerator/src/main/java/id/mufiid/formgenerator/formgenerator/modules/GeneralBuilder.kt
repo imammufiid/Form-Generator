@@ -1,6 +1,7 @@
 package id.mufiid.formgenerator.formgenerator.modules
 
 import android.app.Activity
+import android.view.ViewGroup
 import android.widget.LinearLayout
 
 interface GeneralBuilder<T> {
@@ -11,5 +12,5 @@ interface GeneralBuilder<T> {
     fun setOrientation(orientation: Int): T
     fun setNullable(nullable: Boolean): T
     fun setDefStyleAttr(defStyleAttr: Int): T
-    fun setFormLayout(formLayout: LinearLayout?): T
+    fun setFormLayout(formLayout: ViewGroup?): T
 }
