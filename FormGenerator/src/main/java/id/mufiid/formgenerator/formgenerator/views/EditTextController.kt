@@ -434,8 +434,8 @@ class EditTextController(builder: Builder) :
          * Handle on text changed listener
          */
         editTextContent?.addTextChangedListener {
-            if (it.toString().length < builder.length) {
-                editTextContent?.error = "${builder.title} min length ${builder.length}"
+            if (it.toString().length > builder.length) {
+                editTextContent?.error = "${builder.title} max length ${builder.length}"
             }
         }
 
