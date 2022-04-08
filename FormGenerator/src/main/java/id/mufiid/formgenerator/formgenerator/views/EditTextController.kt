@@ -11,7 +11,6 @@ import android.text.InputType
 import android.text.method.KeyListener
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -32,7 +31,7 @@ import java.util.*
 class EditTextController(builder: Builder) :
     LinearLayout(builder.context, null, builder.defStyleAttr) {
     private var activity: Activity? = null
-    private var formLayout: ViewGroup? = null
+    private var formLayout: LinearLayout? = null
     private var textTitle: TextView
     private var editTextContent: EditText? = null
     var view: View? = null
@@ -54,7 +53,7 @@ class EditTextController(builder: Builder) :
         var context: Context? = null
 
         //optional
-        var formLayout: ViewGroup? = null
+        var formLayout: LinearLayout? = null
         var title: String? = null
         var minLines = 0
         var dateFormat: String? = null
@@ -135,7 +134,7 @@ class EditTextController(builder: Builder) :
         /**
          * Set view group
          */
-        override fun setFormLayout(formLayout: ViewGroup?): Builder {
+        override fun setFormLayout(formLayout: LinearLayout?): Builder {
             this.formLayout = formLayout
             return this
         }
