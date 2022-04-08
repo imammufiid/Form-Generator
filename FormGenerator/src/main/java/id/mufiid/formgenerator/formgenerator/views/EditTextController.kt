@@ -67,7 +67,7 @@ class EditTextController(builder: Builder) :
         var defStyleAttr: Int = R.style.Theme_FormGenerator
         var formViewResource = -1
         var length: Int = Int.MAX_VALUE
-        var isEnabled: Boolean = false
+        var isEnabled: Boolean = true
         var hint: String = ""
 
         init {
