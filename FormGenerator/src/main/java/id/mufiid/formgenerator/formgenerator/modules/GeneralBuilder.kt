@@ -12,5 +12,5 @@ interface GeneralBuilder<T> {
     fun setOrientation(orientation: Int): T
     fun setNullable(nullable: Boolean): T
     fun setDefStyleAttr(defStyleAttr: Int): T
-    fun setFormLayout(formLayout: ViewGroup?): T
+    fun setFormLayout(formLayout: LinearLayout?): T
 }
