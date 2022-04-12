@@ -30,7 +30,7 @@ class TextViewController(builder: Builder) :
         var formLayout: LinearLayout? = null
 
         var title: String = ""
-        var titleFont: String? = ""
+        var titleFont: String? = null
         var content: String = ""
         var contentFont: String = ""
         var nullable: Boolean = false
