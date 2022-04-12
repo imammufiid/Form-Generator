@@ -11,14 +11,14 @@ class EditTextMultipleController(builder: Builder) {
     var context: Context? = null
     var activity: Activity? = null
     var formLayout: LinearLayout? = null
-    var editTextList: HashMap<String, EditTextController>? = HashMap()
+    var editTextList: HashMap<String?, EditTextController?>? = HashMap()
     var view: View? = null
 
-    class Builder(activity: Activity, editTextList: HashMap<String, EditTextController>) {
+    class Builder(activity: Activity, editTextList: HashMap<String?, EditTextController?>?) {
         var context: Context? = null
         var activity: Activity? = null
         var formLayout: LinearLayout? = null
-        var editTextList: HashMap<String, EditTextController>? = null
+        var editTextList: HashMap<String?, EditTextController?>? = null
         var margin: Int? = null
 
         init {
@@ -33,7 +33,7 @@ class EditTextMultipleController(builder: Builder) {
             return this
         }
 
-        fun setEdtList(editTextList: HashMap<String, EditTextController>): Builder {
+        fun setEdtList(editTextList: HashMap<String?, EditTextController?>): Builder {
             this.editTextList = editTextList
             return this
         }
