@@ -333,7 +333,7 @@ class EditTextController(builder: Builder) :
          * Checking mode edit text
          */
         if (builder.mode == Mode.SEARCH) {
-            btnSearch = view?.findViewById<ImageButton>(R.id.btnSearch)
+            btnSearch = view?.findViewById(R.id.btnSearch)
             btnSearch?.visibility = VISIBLE
             btnSearch?.setOnClickListener {
                 onClickSearchListener?.onClickSearch(
