@@ -14,12 +14,96 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="EditText" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@drawable/bg_edittext</item>
+    <style name="EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/rounded_edit_text_white</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="ItemSpinner" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@drawable/rounded_edit_text_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ButtonCircle" parent="">
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearance">@style/circleShape</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="circleShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ButtonRoundedPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="cornerRadius">6dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="cornerRadius">6dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/deep_red</item>
+    </style>
+
+    <style name="ButtonDanger" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="cornerRadius">6dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/deep_red</item>
+    </style>
+
+    <style name="ButtonOutline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="cornerRadius">6dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonRoundedSecondary" parent="Widget.AppCompat.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="android:textColor">@color/text_color_button_secondary</item>
+        <item name="backgroundTint">@color/button_color_secondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="ButtonRoundedOutline" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
+    <style name="ButtonRoundedWhite" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingVertical" tools:targetApi="o">18dp</item>
+        <item name="android:textColor">@color/text_color_button_white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="cornerRadius">50dp</item>
+    </style>
+
 </resources>
