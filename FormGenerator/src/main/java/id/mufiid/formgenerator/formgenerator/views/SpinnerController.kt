@@ -6,6 +6,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
@@ -149,7 +151,7 @@ class SpinnerController(builder: Builder) :
             this.items.addAll(builder.items!!)
 
             for (item in builder.items!!) { //show all but hidden item
-                if (item.isHidden() == false) itemDropDown.add(item)
+                if (item.isHidden() == false) this.itemDropDown.add(item)
             }
         }
 
@@ -157,11 +159,17 @@ class SpinnerController(builder: Builder) :
             spinnerAdapter = SpinnerAdapter(this.ctx!!, R.layout.row_spinner, this.itemDropDown)
         }
         spinnerAnswer?.adapter = spinnerAdapter
-        spinnerAnswer?.setOnItemClickListener { _, _, index, _ ->
-            if (onSelectedListener != null) {
-                onSelectedListener?.onSelectedData(items[index])
-                onSelectedListener?.onSelectedPosition(index)
+        spinnerAnswer?.onItemSelectedListener = object: OnItemSelectedListener {
+            override fun onItemSelected(av: AdapterView<*>?, v: View?, i: Int, l: Long) {
+                if (onSelectedListener != null) {
+                    onSelectedListener?.onSelectedData(items[i])
+                    onSelectedListener?.onSelectedPosition(i)
+                }
             }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
         }
 
         if (builder.defaultSelectedValue != null) {
