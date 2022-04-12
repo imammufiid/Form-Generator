@@ -27,8 +27,10 @@ class HorizontalLayoutController(
         this.horMargin = horizontalMargin
     }
 
-    fun addView(view: View, setHeightWrapContent: Boolean) {
-        this.listView.add(view)
+    fun addView(view: View?, setHeightWrapContent: Boolean) {
+        if (view != null) {
+            this.listView.add(view)
+        }
 
         if (setHeightWrapContent) {
             wrapContentHeightExist = true
