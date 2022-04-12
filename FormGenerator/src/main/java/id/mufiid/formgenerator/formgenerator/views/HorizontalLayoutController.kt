@@ -27,6 +27,10 @@ class HorizontalLayoutController(
         this.horMargin = horizontalMargin
     }
 
+    fun setFormLayout(formLayout: LinearLayout?) {
+        formLayout?.addView(this.getView())
+    }
+
     fun addView(view: View?, setHeightWrapContent: Boolean) {
         if (view != null) {
             this.listView.add(view)
