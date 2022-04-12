@@ -361,34 +361,39 @@ class EditTextController(builder: Builder) :
         /**
          * checking input type
          */
-        if (builder.inputType == InputType.TYPE_CLASS_DATETIME) {
-            if (dateFormat != null) {
-                dateFormat = builder.dateFormat
+        when (builder.inputType) {
+            InputType.TYPE_CLASS_DATETIME -> {
+                if (dateFormat != null) {
+                    dateFormat = builder.dateFormat
+                }
+                datePickerDialog = this.activity?.let {
+                    DatePickerDialog(
+                        it, dateSetListener,
+                        myCalendar[Calendar.YEAR], myCalendar[Calendar.MONTH],
+                        myCalendar[Calendar.DAY_OF_MONTH]
+                    )
+                }
+                editTextContent?.isFocusableInTouchMode = false
+                editTextContent?.setOnClickListener { _ -> datePickerDialog?.show() }
+                editTextContent?.keyListener = null
+                editTextContent?.inputType = InputType.TYPE_NULL
             }
-            datePickerDialog = this.activity?.let {
-                DatePickerDialog(
-                    it, dateSetListener,
-                    myCalendar[Calendar.YEAR], myCalendar[Calendar.MONTH],
-                    myCalendar[Calendar.DAY_OF_MONTH]
-                )
+            InputType.TYPE_DATETIME_VARIATION_TIME -> {
+                if (dateFormat != null) {
+                    dateFormat = builder.dateFormat
+                }
+                val mCurrentTime = Calendar.getInstance()
+                val hour = mCurrentTime[Calendar.HOUR_OF_DAY]
+                val minute = mCurrentTime[Calendar.MINUTE]
+                timePickerDialog = TimePickerDialog(this.activity, timeSetListener, hour, minute, true)
+                editTextContent?.isFocusableInTouchMode = false
+                editTextContent?.setOnClickListener { _ -> timePickerDialog?.show() }
+                editTextContent?.keyListener = null
+                editTextContent?.inputType = InputType.TYPE_NULL
             }
-            editTextContent?.isFocusableInTouchMode = false
-            editTextContent?.setOnClickListener { _ -> datePickerDialog!!.show() }
-            editTextContent?.keyListener = null
-            editTextContent?.inputType = InputType.TYPE_NULL
-        } else if (builder.inputType == InputType.TYPE_DATETIME_VARIATION_TIME) {
-            if (dateFormat != null) {
-                dateFormat = builder.dateFormat
+            else -> {
+                if (builder.inputType != -1) editTextContent?.inputType = builder.inputType
             }
-            val mCurrentTime = Calendar.getInstance()
-            val hour = mCurrentTime[Calendar.HOUR_OF_DAY]
-            val minute = mCurrentTime[Calendar.MINUTE]
-            timePickerDialog = TimePickerDialog(activity, timeSetListener, hour, minute, true)
-            editTextContent?.setOnClickListener { _ -> timePickerDialog?.show() }
-            editTextContent?.keyListener = null
-            editTextContent?.inputType = InputType.TYPE_NULL
-        } else {
-            if (builder.inputType != -1) editTextContent?.inputType = builder.inputType
         }
 
         /**
