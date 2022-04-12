@@ -140,7 +140,6 @@ class ButtonController(builder: Builder) {
     }
 
     fun getView(): View? {
-        this.view = this.button
         return this.button
     }
 }
