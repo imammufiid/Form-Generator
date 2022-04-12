@@ -462,4 +462,7 @@ class EditTextController(builder: Builder) :
             formLayout?.addView(view)
         }
     }
+
+    @JvmName("getView1")
+    fun getView() = this.view
 }
