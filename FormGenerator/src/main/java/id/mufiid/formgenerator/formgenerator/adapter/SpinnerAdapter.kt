@@ -8,7 +8,7 @@ import android.widget.TextView
 import id.mufiid.formgenerator.formgenerator.model.SpinnerData
 
 class SpinnerAdapter(context: Context, resource: Int, data: ArrayList<SpinnerData>) :
-    ArrayAdapter<SpinnerData>(context, resource) {
+    ArrayAdapter<SpinnerData>(context, resource, data) {
         private var dataSet: ArrayList<SpinnerData> = data
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
