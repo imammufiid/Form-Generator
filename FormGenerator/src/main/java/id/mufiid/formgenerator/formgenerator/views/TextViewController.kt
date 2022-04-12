@@ -137,42 +137,41 @@ class TextViewController(builder: Builder) :
             formLayout = builder.formLayout
             formLayout?.addView(view)
         }
+    }
 
-        fun setContent(text: String?) {
-            textViewContent!!.text = text
-        }
+    fun setContent(text: String?) {
+        textViewContent!!.text = text
+    }
 
-        fun getView(): View? {
-            return view
-        }
+    fun getView(): View? {
+        return view
+    }
 
-        fun getContent(): String? {
-            return if (view?.visibility == GONE) null else textViewContent!!.text.toString()
-        }
+    fun getContent(): String? {
+        return if (view?.visibility == GONE) null else textViewContent!!.text.toString()
+    }
 
-        fun getTitle(): String {
-            return title
-        }
+    fun getTitle(): String {
+        return title
+    }
 
-        fun setTitle(title: String?) {
-            this.title = title!!
-        }
+    fun setTitle(title: String?) {
+        this.title = title!!
+    }
 
-        fun getTextViewTitle(): TextView? {
-            return textViewTitle
-        }
+    fun getTextViewTitle(): TextView? {
+        return textViewTitle
+    }
 
-        fun getTextViewContent(): TextView? {
-            return textViewContent
-        }
+    fun getTextViewContent(): TextView? {
+        return textViewContent
+    }
 
-        fun attachView() {
-            formLayout!!.addView(view)
-        }
+    fun attachView() {
+        formLayout?.addView(view)
+    }
 
-        fun detachView() {
-            formLayout!!.removeView(view)
-        }
-
+    fun detachView() {
+        formLayout?.removeView(view)
     }
 }
