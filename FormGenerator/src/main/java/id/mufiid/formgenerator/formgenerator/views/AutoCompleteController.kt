@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -210,8 +209,6 @@ class AutoCompleteController(builder: Builder) :
                             break
                         }
                     }
-                } else {
-                    Log.d("setOnFocusChangeListener", hasFocus.toString())
                 }
 
                 if (!validValue) {

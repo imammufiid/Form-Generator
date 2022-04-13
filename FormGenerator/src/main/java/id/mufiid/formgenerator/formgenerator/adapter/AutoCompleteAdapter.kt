@@ -1,7 +1,6 @@
 package id.mufiid.formgenerator.formgenerator.adapter
 
 import android.app.Activity
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -106,8 +105,6 @@ class AutocompleteAdapter(
         override fun publishResults(charSequence: CharSequence?, results: FilterResults) {
             val tempValues: ArrayList<AutocompleteData> =
                 results.values as ArrayList<AutocompleteData>
-            Log.d("RESULT1", results.values.toString())
-            Log.d("RESULT2", tempValues.toString())
             clear()
             if (results.count > 0) {
                 for (autocompleteData in tempValues) {
