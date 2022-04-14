@@ -1,10 +1,13 @@
 package id.mufiid.formgenerator
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import id.mufiid.formgenerator.databinding.ActivityMainBinding
+import id.mufiid.formgenerator.formgenerator.model.AutocompleteData
+import id.mufiid.formgenerator.formgenerator.model.CheckboxData
 import id.mufiid.formgenerator.formgenerator.model.SpinnerData
 import id.mufiid.formgenerator.formgenerator.utils.Mode
 import id.mufiid.formgenerator.formgenerator.views.*
@@ -64,6 +67,7 @@ class MainActivity : AppCompatActivity() {
          */
         editTextBuilder.clone().setInputType(InputType.TYPE_DATETIME_VARIATION_TIME)
             .setTitle("Edit Text Time Picker")
+            .setDateFormat("HH:ii")
             .setTitleColorResource(id.mufiid.formgenerator.formgenerator.R.color.dark_grey)
             .create()
 
@@ -94,6 +98,37 @@ class MainActivity : AppCompatActivity() {
         }.setFormLayout(_bind?.formLayout).create()
 
         /**
+         * Attach Autocomplete
+         */
+        val atcList: ArrayList<AutocompleteData> = ArrayList()
+        atcList.add(AutocompleteData(1, "1", "Satu"))
+        atcList.add(AutocompleteData(2, "1", "Satu Dua"))
+        atcList.add(AutocompleteData(3, "3", "Tiga"))
+        AutoCompleteController.Builder(this)
+            .setTitle("Select").setItems(atcList).setFormLayout(_bind?.formLayout).create()
+
+        /**
+         * Attach multiple checkbox
+         */
+
+        //create multiple checkbox
+        val atcListChk= ArrayList<CheckboxData>()
+        for (i in 1..10) {
+            atcListChk.add(CheckboxData(i, "1", "data $i", false))
+        }
+        val multipleCheckBox = MultipleCheckboxController.Builder(this)
+            .setTitle("Select Checkbox")
+            .setItems(arrayListOf())
+            .setFormLayout(_bind?.formLayout)
+            .create()
+        multipleCheckBox.updateItemsList(atcListChk)
+        val idSelected = java.util.ArrayList<String>()
+        idSelected.add("1")
+        idSelected.add("3")
+        multipleCheckBox.setSelected(idSelected, MultipleCheckboxController.SelectedBy.ID)
+
+
+        /**
          * Attach Text View
          */
         TextViewController.Builder(this)
@@ -116,8 +151,6 @@ class MainActivity : AppCompatActivity() {
         /**
          * Attach Radio Button
          */
-
-        //create radio button
         RadioButtonController.Builder(this)
             .setTitle("Radio Button").setOptionList(arrayOf("Male", "Female"))
             .setFormLayout(_bind?.formLayout).setSelected("Female").create()
@@ -140,7 +173,7 @@ class MainActivity : AppCompatActivity() {
         horizontalController.addView(rwEditText.view, false)
         horizontalController.addView(button.getView(), true)
         horizontalController.addView(rsEditText.view, false)
-        _bind?.formLayout?.addView(horizontalController.getView())
+        horizontalController.setFormLayout(_bind?.formLayout)
 
         EditTextController.Builder(this).apply {
             title = "RW"
@@ -156,7 +189,7 @@ class MainActivity : AppCompatActivity() {
                     text = "My Button"
                 }
                 .setOnClickListener {
-                    Toast.makeText(this, "Button Controller", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, FormGeneratorActivity::class.java))
                 }
                 .create()
         }
