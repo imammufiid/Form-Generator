@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity() {
                     text = "My Button"
                 }
                 .setOnClickListener {
-                    startActivity(Intent(this, FormGeneratorActivity::class.java))
+                    Toast.makeText(this, "CLICK", Toast.LENGTH_SHORT).show()
                 }
                 .create()
         }
