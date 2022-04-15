@@ -71,7 +71,7 @@ class EditTextController(builder: Builder) :
         var length: Int = Int.MAX_VALUE
         var isEnabled: Boolean = true
         var hint: String = ""
-        var visibility: Int? = -1
+        var visibility: Int? = View.VISIBLE
 
         init {
             context = activity.baseContext
