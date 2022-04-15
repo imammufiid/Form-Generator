@@ -17,6 +17,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
+import androidx.transition.Visibility
 import id.mufiid.formgenerator.formgenerator.R
 import id.mufiid.formgenerator.formgenerator.function.ViewChecker
 import id.mufiid.formgenerator.formgenerator.modules.GeneralBuilder
@@ -42,6 +43,7 @@ class EditTextController(builder: Builder) :
     private var dateFormat: String? = "yyyy-MM-dd"
     private var datePickerDialog: DatePickerDialog? = null
     private var timePickerDialog: TimePickerDialog? = null
+    private var visiblity: Int? = -1
 
     //search mode
     private var onClickSearchListener: OnClickSearchListener? = null
@@ -69,6 +71,7 @@ class EditTextController(builder: Builder) :
         var length: Int = Int.MAX_VALUE
         var isEnabled: Boolean = true
         var hint: String = ""
+        var visibility: Int? = -1
 
         init {
             context = activity.baseContext
@@ -210,6 +213,11 @@ class EditTextController(builder: Builder) :
          */
         fun setHint(hint: String): Builder {
             this.hint = hint
+            return this
+        }
+
+        fun setVisibility(visibility: Int?): Builder {
+            this.visibility = visibility
             return this
         }
 
@@ -448,6 +456,13 @@ class EditTextController(builder: Builder) :
          * set hint edit text
          */
         editTextContent?.hint = builder.hint
+
+        /**
+         * set visibility edit text
+         */
+        if (builder.visibility != null) {
+            editTextContent?.visibility = builder.visibility!!
+        }
 
         /**
          * set enabled edit text
